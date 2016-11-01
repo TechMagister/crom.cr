@@ -1,5 +1,7 @@
 module CROM
   macro mapping(adapters, properties)
+    extend CROM::Model
+
     {% for key, value in properties %}
       {% properties[key] = {type: value} unless value.is_a?(HashLiteral) || value.is_a?(NamedTupleLiteral) %}
     {% end %}
