@@ -8,7 +8,7 @@ module CROM
       @model = T
     end
 
-    abstract def create(**attributes) : T
+    abstract def create(model : T)
     abstract def update(model : T)
     abstract def delete(model : T)
     abstract def persist
