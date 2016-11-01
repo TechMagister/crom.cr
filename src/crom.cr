@@ -10,4 +10,8 @@ module CROM
   def self.adapters
     @@adapters
   end
+
+  def self.container(uri : String)
+    CROM::Container.new uri
+  end
 end
