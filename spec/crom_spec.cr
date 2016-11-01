@@ -8,7 +8,7 @@ class TestModel
 end
 
 class FakeAdapter < CROM::Adapter
-  def initialize(@uri)
+  def initialize(@uri : URI, **options)
   end
 end
 
@@ -24,5 +24,10 @@ describe CROM do
     CROM.register_adapter "fake", FakeAdapter
     CROM.adapters.size.should eq(1)
     CROM.adapters["fake"].should eq(FakeAdapter)
+  end
+
+  it "should create a container" do
+    crom = CROM.container "fake://"
+    crom.should_not be_nil
   end
 end

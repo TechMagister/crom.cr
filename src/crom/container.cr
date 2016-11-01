@@ -6,10 +6,12 @@ module CROM
     @adapter_class : CROM::Adapter.class
     @adapter : CROM::Adapter
 
-    def initialize(uri)
+    getter :adapter
+
+    def initialize(uri, **options)
       @uri = URI.parse(uri)
       @adapter_class = CROM.adapters[@uri.scheme]
-      @adapter = @adapter_class.new(@uri)
+      @adapter = @adapter_class.new(@uri, **options)
     end
 
     forward_missing_to @adapter
