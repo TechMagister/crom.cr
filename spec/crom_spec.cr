@@ -1,19 +1,8 @@
 require "./spec_helper"
 
-class TestModel
-  CROM.mapping([] of Symbol, {
-    name: String,
-    age:  Int32,
-  })
-end
-
-class FakeAdapter < CROM::Adapter
-  def initialize(@uri : URI, **options)
-  end
-end
-
 describe CROM do
   it "should create mapping" do
+    TestModel.should be_a(CROM::Model)
     tm = TestModel.new(name: "Toto", age: 10)
     tm.name.should eq("Toto")
     tm.age.should eq(10)

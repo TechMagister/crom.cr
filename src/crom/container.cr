@@ -6,7 +6,7 @@ module CROM
     @adapter_class : CROM::Adapter.class
     @adapter : CROM::Adapter
 
-    @models = Hash(String, Model.class).new
+    @models = Hash(String, Model).new
 
     getter :adapter, :uri, :models
 
@@ -16,10 +16,8 @@ module CROM
       @adapter = @adapter_class.new(@uri, **options)
     end
 
-    def register_model(name : String | Symbol, mclass : Model.class)
+    def register_model(name : String | Symbol, mclass : Model)
       @models[name.to_s] = mclass
     end
-
-    forward_missing_to @adapter
   end
 end
