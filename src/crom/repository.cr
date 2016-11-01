@@ -1,6 +1,6 @@
 module CROM
   abstract class Repository(T)
-    @model : Model.class
+    @model : Model
 
     getter :container
 
