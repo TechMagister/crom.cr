@@ -36,7 +36,7 @@ module CROM
 
     alias InnerCROMType = NamedTuple(
     	{% for key, opts in properties %}
-        {{key.id}}: {{opts[:type].id}},
+        {{key.id}}: {{opts[:type].id}}{{ (opts[:nilable] ? "?" : "").id }},
       {% end %}
     )
 
