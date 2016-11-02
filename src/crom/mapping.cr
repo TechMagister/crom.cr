@@ -54,7 +54,7 @@ module CROM
       {% end %}
     end
 
-    {{adapter}}_adapter({{properties}})
+    {{adapter.id}}_adapter({{properties}})
 
   end
 end

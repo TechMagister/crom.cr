@@ -1,12 +1,6 @@
 require "spec"
 require "../src/crom"
 
-class TestModel
-  CROM.mapping({
-    name: String,
-    age:  Int32,
-  })
-end
 
 class FakeAdapter < CROM::Adapter
   def initialize(@uri : URI, **options)
@@ -20,4 +14,15 @@ class FakeAdapter < CROM::Adapter
 
   def delete(dataset, namedtuple)
   end
+end
+
+macro fake_adapter(properties)
+end
+
+
+class TestModel
+  CROM.mapping(:fake, {
+    name: String,
+    age:  Int32,
+  })
 end
