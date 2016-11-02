@@ -16,9 +16,10 @@ class FakeAdapter < CROM::Adapter
   end
 end
 
-macro fake_adapter(properties)
+module CROM
+  macro fake_adapter(properties)
+  end
 end
-
 
 class TestModel
   CROM.mapping(:fake, {
