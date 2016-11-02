@@ -1,6 +1,6 @@
 # crom
 
-TODO: Write a description here
+CRystal Object Mapper
 
 ## Installation
 
@@ -14,15 +14,9 @@ dependencies:
 ```
 
 
-## Usage
+## Backend
 
-
-```crystal
-require "crom"
-```
-
-
-TODO: Write usage instructions here
+[MySQL](https://github.com/TechMagister/crom-mysql.cr)
 
 ## Development
 
