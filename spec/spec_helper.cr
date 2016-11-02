@@ -2,7 +2,7 @@ require "spec"
 require "../src/crom"
 
 class TestModel
-  CROM.mapping([] of Symbol, {
+  CROM.mapping({
     name: String,
     age:  Int32,
   })

@@ -1,5 +1,5 @@
 module CROM
-  macro mapping(adapters, properties)
+  macro mapping(properties)
     extend CROM::Model
 
     {% for key, value in properties %}
@@ -34,20 +34,25 @@ module CROM
     )
     end
 
-    {% for adatper in adapters %}
-      CROM.{{adatper.id}}_adapter({{properties}})
-    {% end %}
+    alias InnerCROMType = NamedTuple(
+    	{% for key, opts in properties %}
+        {{key.id}}: {{opts[:type].id}},
+      {% end %}
+    )
 
-    def self.fields
-      {{properties}}
-    end
-
-    def __get(%name : Symbol)
-      case %name
-        {% for key, value in properties %}
-          when :{{key.id}} then {{key.id}}
+    def to_crom() : InnerCROMType
+      {
+        {% for key, opts in properties %}
+          {{key.id}}: {{key.id}},
         {% end %}
-      end
+      }
     end
+
+    def initialize(inner : InnerCROMType)
+      {% for key, opts in properties %}
+        @{{key.id}} = inner[:{{key.id}}]
+      {% end %}
+    end
+
   end
 end
