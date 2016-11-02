@@ -3,6 +3,7 @@ require "../src/crom"
 
 
 class FakeAdapter < CROM::Adapter
+
   def initialize(@uri : URI, **options)
   end
 
@@ -18,6 +19,14 @@ end
 
 module CROM
   macro fake_adapter(properties)
+
+    @delete = false
+    getter delete
+
+    def after_delete
+      @delete = true
+    end
+
   end
 end
 
