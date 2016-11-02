@@ -21,10 +21,20 @@ module CROM
   macro fake_adapter(properties)
 
     @delete = false
-    getter delete
+    @insert = false
+    @update = false
+    getter delete, insert, update
 
     def after_delete
       @delete = true
+    end
+
+    def after_insert(arg)
+      @insert = true
+    end
+
+    def after_update(arg)
+      @update = true
     end
 
   end
