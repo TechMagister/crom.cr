@@ -1,5 +1,5 @@
 module CROM
-  macro mapping(properties)
+  macro mapping(adapter, properties)
     extend CROM::Model
 
     {% for key, value in properties %}
@@ -53,6 +53,8 @@ module CROM
         @{{key.id}} = inner[:{{key.id}}]
       {% end %}
     end
+
+    {{adapter}}_adapter({{properties}})
 
   end
 end
