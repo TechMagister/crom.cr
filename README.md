@@ -2,6 +2,11 @@
 
 CRystal Object Mapper
 
+Work in progress
+
+## TODO
+[ ] Add critera to fetch data
+
 ## Installation
 
 
@@ -16,9 +21,10 @@ dependencies:
 
 ## Backend
 
-[MySQL](https://github.com/TechMagister/crom-mysql.cr)
+[MySQL](https://github.com/TechMagister/crom-mysql.cr) WIP
 
 ## Development
+
 
 TODO: Write development instructions here
 
