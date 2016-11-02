@@ -18,7 +18,7 @@ module CROM
 
     def delete(model : T)
       container.adapter.delete(T, model.to_crom)
-      if model.respond_to?(:after_delete)
+      if model.responds_to?(:after_delete)
         model.after_delete
       end
     end
