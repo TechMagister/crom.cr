@@ -21,7 +21,7 @@ module CROM
     end
 
     macro method_missing(call)
-      container.adapter.{{call.name.id}}(T.dataset, {{call.args.agify}})
+      container.adapter.{{call.name.id}}(T.dataset, {{call.args.argify}})
     end
   end
 end
