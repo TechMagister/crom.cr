@@ -8,9 +8,20 @@ module CROM
       @model = T
     end
 
-    abstract def create(model : T)
-    abstract def update(model : T)
-    abstract def delete(model : T)
-    abstract def persist
+    def insert(model : T)
+      container.adapter.insert(T.dataset, model.to_crom)
+    end
+
+    def update(model : T)
+      container.adapter.update(T.dataset, model.to_crom)
+    end
+
+    def delete(model : T)
+      container.adapter.delete(T.dataset, model.to_crom)
+    end
+
+    macro method_missing(call)
+      container.adapter.{{call.name.id}}(T.dataset, {{call.args.agify}})
+    end
   end
 end
