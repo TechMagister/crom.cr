@@ -9,15 +9,15 @@ module CROM
     end
 
     def insert(model : T)
-      container.adapter.insert(T.dataset, model.to_crom)
+      container.adapter.insert(T, model.to_crom)
     end
 
     def update(model : T)
-      container.adapter.update(T.dataset, model.to_crom)
+      container.adapter.update(T, model.to_crom)
     end
 
     def delete(model : T)
-      container.adapter.delete(T.dataset, model.to_crom)
+      container.adapter.delete(T, model.to_crom)
     end
 
     macro method_missing(call)
