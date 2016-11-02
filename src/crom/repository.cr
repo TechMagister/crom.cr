@@ -20,8 +20,8 @@ module CROM
       container.adapter.delete(T, model.to_crom)
     end
 
-    macro method_missing(call)
-      container.adapter.{{call.name.id}}(T, {{call.args.argify}})
-    end
+    #macro method_missing(call)
+    #  container.adapter.{{call.name.id}}(T, {{call.args.argify}})
+    #end
   end
 end
