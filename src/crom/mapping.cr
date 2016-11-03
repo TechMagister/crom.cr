@@ -48,7 +48,7 @@ module CROM
       }
     end
 
-    def initialize(inner : InnerCROMType)
+    def from_crom(inner : InnerCROMType)
       {% for key, opts in properties %}
         @{{key.id}} = inner[:{{key.id}}]
       {% end %}
