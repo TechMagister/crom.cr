@@ -20,7 +20,7 @@ module CROM
     end
 
     macro model(classname)
-      @model_class : Model = classname
+      @model_class : CROM::Model = {{classname}}
     end
 
     getter container, model
