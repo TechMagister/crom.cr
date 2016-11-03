@@ -19,7 +19,11 @@ module CROM
 
     end
 
-    getter :container
+    macro model(classname)
+      @model_class : Model = classname
+    end
+
+    getter container, model
 
     
     # Method used to get a model by id
@@ -45,7 +49,7 @@ module CROM
     abstract def do_delete(model, *args)
 
 
-    def initialize(@container : CROM::Container, @model_class : Model)
+    def initialize(@container : CROM::Container)
     end
 
     def_repo_method :insert

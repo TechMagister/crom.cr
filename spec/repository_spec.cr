@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 
-testrepo = TestRepo.new CROM.container("fake://"), TestModel
+testrepo = TestRepo.new CROM.container("fake://")
 
 describe CROM::Repository do
 

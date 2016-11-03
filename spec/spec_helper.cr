@@ -48,6 +48,7 @@ class TestModel
 end
 
 class TestRepo < CROM::Repository
+
   def do_insert(model, *args) end
   def do_update(model, *args) end
   def do_delete(model, *args) end
