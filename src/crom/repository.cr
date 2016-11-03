@@ -20,6 +20,12 @@ module CROM
 
     getter :container
 
+    
+    # fetch methods
+    abstract def [](id)
+    abstract def all
+
+    # basic operations
     abstract def do_insert(model : T, *args)
     abstract def do_update(model : T, *args)
     abstract def do_delete(model : T, *args)

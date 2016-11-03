@@ -4,6 +4,8 @@ class TestRepo < CROM::Repository(TestModel)
   def do_insert(model : T, *args) end
   def do_update(model : T, *args) end
   def do_delete(model : T, *args) end
+  def [](id) end
+  def all() end
 end
 
 testrepo = TestRepo.new CROM.container("fake://")
