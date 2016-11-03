@@ -23,7 +23,7 @@ describe CROM do
 
   it "should register a repository" do
     crom = CROM.container "fake://"
-    repo = TestRepo.new crom
+    repo = TestRepo.new crom, TestModel
     CROM.register_repository :repo, repo
     CROM.repository(:repo).should eq(repo)
   end

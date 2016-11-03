@@ -45,7 +45,7 @@ module CROM
     abstract def do_delete(model, *args)
 
 
-    def initialize(@container : CROM::Container)
+    def initialize(@container : CROM::Container, @model_class : Model)
     end
 
     def_repo_method :insert
