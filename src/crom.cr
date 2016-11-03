@@ -1,9 +1,9 @@
 require "./crom/*"
 
 module CROM
-  @@adapters = Hash(String, Adapter.class).new
+  @@adapters = Hash(String, Gateway.class).new
 
-  def self.register_adapter(name : String, adapter : Adapter.class)
+  def self.register_adapter(name : String, adapter : Gateway.class)
     @@adapters[name] = adapter
   end
 

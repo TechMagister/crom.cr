@@ -2,7 +2,7 @@ require "spec"
 require "../src/crom"
 
 
-class FakeAdapter < CROM::Adapter
+class FakeAdapter < CROM::Gateway
 
   def initialize(@uri : URI, **options)
   end

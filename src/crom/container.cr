@@ -3,17 +3,17 @@ require "uri"
 module CROM
   class Container
     @uri : URI
-    @adapter_class : CROM::Adapter.class
-    @adapter : CROM::Adapter
+    @gateway_class : CROM::Gateway.class
+    @gateway : CROM::Gateway
 
     @models = Hash(String, Model).new
 
-    getter :adapter, :uri, :models
+    getter :gateway, :uri, :models
 
     def initialize(uri, **options)
       @uri = URI.parse(uri)
-      @adapter_class = CROM.adapters[@uri.scheme]
-      @adapter = @adapter_class.new(@uri, **options)
+      @gateway_class = CROM.adapters[@uri.scheme]
+      @gateway = @gateway_class.new(@uri, **options)
     end
 
     def register_model(name : String | Symbol, mclass : Model)
