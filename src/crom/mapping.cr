@@ -56,5 +56,7 @@ module CROM
 
     CROM.{{adapter.id}}_adapter({{properties}})
 
+    def_clone
+
   end
 end
