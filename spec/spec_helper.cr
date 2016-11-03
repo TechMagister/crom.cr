@@ -7,13 +7,13 @@ class FakeAdapter < CROM::Gateway
   def initialize(@uri : URI, **options)
   end
 
-  def insert(dataset, namedtuple)
+  def insert(**args)
   end
 
-  def update(dataset, namedtuple)
+  def update(**args)
   end
 
-  def delete(dataset, namedtuple)
+  def delete(**args)
   end
 end
 
@@ -25,7 +25,7 @@ module CROM
     @update = false
     getter delete, insert, update
 
-    def after_delete
+    def after_delete(arg)
       @delete = true
     end
 

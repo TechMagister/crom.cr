@@ -1,7 +1,9 @@
 require "./spec_helper"
 
 class TestRepo < CROM::Repository(TestModel)
-  
+  def do_insert(model : T, *args) end
+  def do_update(model : T, *args) end
+  def do_delete(model : T, *args) end
 end
 
 testrepo = TestRepo.new CROM.container("fake://")

@@ -1,8 +1,8 @@
 module CROM
   abstract class Gateway
     abstract def initialize(uri, **options)
-    abstract def insert(dataset, namedtuple)
-    abstract def update(dataset, namedtuple)
-    abstract def delete(dataset, namedtuple)
+    abstract def insert(**args)
+    abstract def update(**args)
+    abstract def delete(**args)
   end
 end
