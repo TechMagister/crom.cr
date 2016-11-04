@@ -23,11 +23,7 @@ module CROM
 
     end
 
-    macro model(classname)
-      @model_class : CROM::Model = {{classname}}
-    end
-
-    getter container, model
+    getter container
 
     
     # Method used to get a model by id

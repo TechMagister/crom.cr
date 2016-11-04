@@ -43,14 +43,14 @@ module CROM
     def to_crom() : InnerCROMType
       {
         {% for key, opts in properties %}
-          {{key.id}}: {{key.id}},
+          {{opts[:key] || key.id}}: {{key.id}},
         {% end %}
       }
     end
 
     def from_crom(inner : InnerCROMType)
       {% for key, opts in properties %}
-        @{{key.id}} = inner[:{{key.id}}]
+        @{{key.id}} = inner[:{{opts[:key] || key.id}}]
       {% end %}
     end
 
