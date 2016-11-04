@@ -1,8 +1,10 @@
 module CROM
 
-  
+  module AbstractRepo end
 
   abstract class Repository(T)
+
+    include AbstractRepo
 
     macro def_repo_method(name)
 

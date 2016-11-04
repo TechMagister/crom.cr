@@ -13,4 +13,12 @@ describe CROM do
     crom = CROM.container "fake://"
     crom.should_not be_nil
   end
+
+  it "should register a repository" do 
+    testrepo = TestRepo.new CROM.container("fake://")
+    CROM.repository(:testrepo).should be_nil
+    CROM.register_repository(:testrepo, testrepo)
+    CROM.repository(:testrepo).should eq(testrepo)
+  end
+
 end

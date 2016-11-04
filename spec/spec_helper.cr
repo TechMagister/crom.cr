@@ -48,10 +48,9 @@ class TestModel
 end
 
 class TestRepo < CROM::Repository(TestModel)
-
-  def do_insert(model, *args) end
-  def do_update(model, *args) end
-  def do_delete(model, *args) end
+  def do_insert(model : T, *args) end
+  def do_update(model : T, *args) end
+  def do_delete(model : T, *args) end
   def [](id) end
   def all() end
 end
