@@ -1,17 +1,19 @@
 module CROM
 
-  abstract class Repository
+  
+
+  abstract class Repository(T)
 
     macro def_repo_method(name)
 
       # execute the do_{{name.id}} method and call model.after_{{name.id}} if defined
-      def {{name.id}}(model)
+      def {{name.id}}(model : T)
         ret = do_{{name.id}}(model)
         do_after_{{name.id}} model, ret
       end
 
       # check if the method after_{{name.id}} exists and call it
-      def do_after_{{name.id}}(model, *args)
+      def do_after_{{name.id}}(model : T, *args)
         if model.responds_to? :after_{{name.id}}
           model.after_{{name.id}} *args
         end
@@ -40,13 +42,13 @@ module CROM
     abstract def all
 
     # execute insert operation
-    abstract def do_insert(model, *args)
+    abstract def do_insert(model : T, *args)
 
     #execute update
-    abstract def do_update(model, *args)
+    abstract def do_update(model : T, *args)
 
     # execute delete
-    abstract def do_delete(model, *args)
+    abstract def do_delete(model : T, *args)
 
 
     def initialize(@container : CROM::Container)
