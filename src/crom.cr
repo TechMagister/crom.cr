@@ -16,7 +16,7 @@ module CROM
     @@repositories[name.to_s] = repository
   end
 
-  def self.repository(name)
+  def self.repository(name : String|Symbol)
     @@repositories[name.to_s]?
   end
 
