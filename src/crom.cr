@@ -12,11 +12,11 @@ module CROM
     @@adapters.dup
   end
 
-  def self.register_repository(name : String|Symbol, repository : AbstractRepo)
-    @@repositories[name.to_s] = repository
+  def self.register_repository(repository : AbstractRepo)
+    @@repositories[repository.class.name] = repository
   end
 
-  def self.repository(name : String|Symbol)
+  protected def self.repository(name : String|Symbol)
     @@repositories[name.to_s]?
   end
 

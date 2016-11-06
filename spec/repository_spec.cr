@@ -1,6 +1,7 @@
 require "./spec_helper"
 
 testrepo = TestRepo.new CROM.container("fake://")
+CROM.register_repository(testrepo)
 
 describe CROM::Repository do
 
@@ -8,7 +9,7 @@ describe CROM::Repository do
     model = TestModel.new("Fakename", 10)
 
     model.delete.should be_false
-    testrepo.delete model
+    TestRepo.delete model
     model.delete.should be_true
   end
 
@@ -16,7 +17,7 @@ describe CROM::Repository do
     model = TestModel.new("Fakename", 10)
 
     model.insert.should be_false
-    testrepo.insert model
+    TestRepo.insert model
     model.insert.should be_true
   end
 
@@ -24,7 +25,7 @@ describe CROM::Repository do
     model = TestModel.new("Fakename", 10)
 
     model.update.should be_false
-    testrepo.update model
+    TestRepo.update model
     model.update.should be_true
   end
 

@@ -6,6 +6,7 @@ module CROM
 
     include AbstractRepo
 
+    # macro used to define insert, update, delete methods
     macro def_repo_method(name)
 
       # execute the do_{{name.id}} method and call model.after_{{name.id}} if defined
@@ -23,8 +24,42 @@ module CROM
 
     end
 
-    getter container
+    macro commands(*methods)
+      {% for method in methods %}
+        def self.{{method.id}}(*args, **options)
+          if repo = self.repo
+            repo.{{method.id}}(*args, **options)
+          else
+            raise Exception.new("Repository not registered, use CROM.register_repository")
+          end
+        end
 
+        def self.{{method.id}}(*args, **options)
+          if repo = self.repo
+            repo.{{method.id}}(*args, **options) do |*yield_args|
+              yield *yield_args
+            end
+          else
+            raise Exception.new("Repository not registered, use CROM.register_repository")
+          end
+        end
+      {% end %}
+    end
+
+    # ----------
+
+    # return {{@type.name.stringify}}
+    def self.name
+      {{@type.name.stringify}}
+    end
+
+    def self.repo
+      if repo = CROM.repository(self.name)
+        repo.as(self)
+      end
+    end
+
+    getter container
     
     # Method used to get a model by id
     #
@@ -56,8 +91,7 @@ module CROM
     def_repo_method :update
     def_repo_method :delete
 
-    #macro method_missing(call)
-    #  container.gateway.{{call.name.id}}(T, {{call.args.argify}})
-    #end
+    commands :[], :all, :insert, :update, :delete
+
   end
 end
