@@ -8,7 +8,7 @@ See the backends for usage.
 
 ## TODO
 - [ ] Add critera to fetch data
-- [ ] Add more backeds ( MongoDB, Postgres, ... )
+- [ ] Add more backends ( MongoDB, Postgres, ... )
 
 ## Installation
 
@@ -24,19 +24,19 @@ dependencies:
 
 ## Backend
 
-Feature | MySQL | Redis
--------| -------|-------
-Insert | x | x
-Delete | x | x
-Update | x | x
-Aggregation | x | TODO
-Get by id | x | x
-Get all | x | x
-Delete all | x | x
-Count | x | x
+|                 Backend Feature | MySQL | Redis |
+|---------------------------------|-------|-------|
+| Insert                          |   x   |   x   |
+| Delete                          |   x   |   x   |
+| Update                          |   x   |   x   |
+| Aggregation                     |   x   |   x   |
+| Get by id                       |   x   |   x   |
+| Get all                         |   x   |   x   |
+| Delete all                      |   x   |   x   |
+| Count                           |   x   |   x   |
 
 - [MySQL](https://github.com/TechMagister/crom-mysql.cr) backend, support aggregation, insert,update, delete, get by id
-- [Redis](https://github.com/TechMagister/crom-redis.cr) backend, doesn't support aggregation for now, use JSON to store the data
+- [Redis](https://github.com/TechMagister/crom-redis.cr) backend, use JSON to store the data
 
 
 ## Contributing
